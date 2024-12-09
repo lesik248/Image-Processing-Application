@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processed Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #000000;
+            font-size: 2.5rem;
+            margin-top: 50px;
+        }
+        .button-container {
+            margin-top: 30px;
+        }
+        .processing-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .processing-btn:hover {
+            background-color: #45a049;
+        }
+        img {
+            width: 300px;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Processing Application</h1>
+
+    <form method="POST">
+        <h3>Select Processing Method:</h3>
+        <button type="submit" name="method" value="global_threshold">Global Threshold</button>
+        <button type="submit" name="method" value="adaptive_threshold">Adaptive Threshold</button>
+        <button type="submit" name="method" value="negative">Negative</button>
+        <button type="submit" name="method" value="linear_contrast">Linear Contrast</button>
+        <button type="submit" name="method" value="multiply_by_constant">Multiply by Constant</button>
+        <button type="submit" name="method" value="power_of_2">Power of 2</button>
+    </form>
+
+    <div class="container">
+        <div>
+            <h2>Original Image</h2>
+            <img src="{{ original_image }}" alt="Original Image">
+        </div>
+        {% if processed_image %}
+        <div>
+            <h2>Processed Image</h2>
+            <img src="{{ processed_image }}" alt="Processed Image">
+        </div>
+        {% endif %}
+    </div>
+
+    <br>
+    <a href="/">Upload Another Image</a>
+</body>
+</html>

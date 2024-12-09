@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #000000;
+            margin-top: 50px;
+        }
+        .upload-btn, .choose-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .upload-btn:hover, .choose-btn:hover {
+            background-color: #45a049;
+        }
+        .file-input {
+            display: none;
+        }
+        .image-name {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Processing Application</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <!-- Custom button triggers the file input -->
+        <label for="file" class="choose-btn">Choose Image</label>
+        <input type="file" id="file" name="file" class="file-input" accept=".png, .jpg, .jpeg, .gif, .tif, .bmp, .pcx" required onchange="updateImageName()">
+        <button class="upload-btn" type="submit">Upload Image</button>
+    </form>
+
+    <!-- Label to show the selected image file name -->
+    <div id="image-name" class="image-name">No image chosen</div>
+
+    <script>
+        // Function to update the label with the selected image's file name
+        function updateImageName() {
+            var fileInput = document.getElementById('file');
+            var imageName = fileInput.files[0] ? fileInput.files[0].name : 'No image chosen';
+            document.getElementById('image-name').textContent = imageName;
+        }
+    </script>
+</body>
+</html>
